@@ -1,5 +1,6 @@
 
 #%%
+
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import re
@@ -14,18 +15,17 @@ import pickle
 # For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory
 from sklearn.feature_extraction.text import CountVectorizer
 import os
-print(os.listdir("../input"))
+#print(os.listdir("../input"))
 
 # Any results you write to the current directory are saved as output.
 
 
-# In[ ]:
+
+#%%
+
+reviews=pd.read_csv("Reviews.csv")
 
 
-reviews=pd.read_csv("../input/Reviews.csv")
-
-
-# In[ ]:
 
 
 reviews.head()
@@ -162,7 +162,7 @@ abbr_dict={
         "hasn't":"has not",
         "hadn't":"had not",
         "won't":"will not",
-        '["\',\.<>()=*#^:;%µ|&!-123456789]':""}
+        '["\',\.<>()=*#^:;%µ?|&!-123456789]':""}
 
 
 # In[ ]:
@@ -181,7 +181,7 @@ for sentence in (reviews['Text'].values):
 # In[ ]:
 
 
-l[:5]
+print(l[0])
 
 
 # In[ ]:
@@ -203,12 +203,8 @@ reviews['Text'].values
 counter.shape
 
 
-# In[ ]:
-
-
-from nltk.tokenize import sent_tokenize, word_tokenize
-from nltk.corpus import stopwords
-
+#%%
+nltk.download("stopwords")
 
 # In[ ]:
 
@@ -273,7 +269,7 @@ a=preprocessing(l,stemming=True)
 # In[ ]:
 
 
-print(a[0:3])
+print(a[0])
 
 
 # In[ ]:
@@ -300,7 +296,8 @@ sentences=to_sentence(a)
 
 sentences[0]
 
-
+#%%
+print()
 # In[ ]:
 
 
